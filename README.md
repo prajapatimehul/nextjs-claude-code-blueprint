@@ -100,6 +100,30 @@ This is not a framework. It's a clean starting point.
 
 ---
 
+## What's Missing?
+
+This is a minimal starting point. For production Next.js full-stack development, see:
+
+**[📋 MISSING.md](./MISSING.md)** - Complete guide on what to add next
+
+**Quick Overview:**
+- TypeScript LSP plugin (critical for Next.js development)
+- Security scanning plugin
+- Hooks configuration for automated quality gates
+- Additional MCP servers (Vercel, GitHub, Sentry)
+- Custom skills for workflow automation
+- CI/CD setup
+- Testing configuration
+
+**Implementation Priority:**
+1. **Phase 1 (Critical):** TypeScript LSP, security plugin, .env setup, hooks
+2. **Phase 2 (High Value):** Automation scripts, more MCP servers, workflows doc
+3. **Phase 3 (Enhancement):** Custom skills, example app, CI/CD
+
+See [MISSING.md](./MISSING.md) for detailed setup instructions and rationale.
+
+---
+
 ## Contribute
 
 Found something essential that's missing? Open an issue.
