@@ -1,36 +1,72 @@
-# What We Did
+# What We Did - 2025-12-27
 
 ## Claude Code Plugins
 
-### Installed
-- **frontend-design** - Production-grade UI design, auto-activates for frontend work
+### Installed Plugins ✅
 
-### Available (Not Installed)
-- **security-guidance** - Block security vulnerabilities (XSS, SQL injection, eval)
-- **commit-commands** - `/commit`, `/commit-push-pr` commands
-- **pr-review-toolkit** - 6 specialized PR review agents
-- **feature-dev** - 7-phase feature workflow
+#### 1. Frontend Design Plugin
+- **Source**: `frontend-design@claude-code-plugins`
+- **Scope**: User (available for all projects)
+- **Auto-activates**: When building UI components, pages, or applications
+- **Provides**:
+  - Bold aesthetic choices (avoiding generic AI designs)
+  - Distinctive typography and color palettes
+  - Production-grade animations and visual details
+  - Context-aware design thinking
+- **Usage**: Simply describe frontend needs - plugin auto-activates
+  - Example: "Create a patient dashboard for clinical trials"
+  - Example: "Build a trial search interface with filters"
 
-## MCP Servers
+### Available Official Plugins (Not Yet Installed)
 
-### Context7
-- Library documentation lookup
-- Usage: Ask about Vercel AI, Drizzle, TanStack Query, NextAuth
+#### 🔒 Security & Code Quality
+- **security-guidance** - Warns about security issues (XSS, SQL injection, eval, etc.) - **CRITICAL for medical app**
+- **code-review** - 5 parallel agents for PR review with confidence scoring
+- **pr-review-toolkit** - 6 specialized review agents (comments, tests, errors, types, quality, simplification)
 
-### PostgreSQL (via Docker)
-- Database queries, schema inspection
-- Running on port 8082
-- Config in `docker-compose.yml`
+#### ⚡ Git Workflow
+- **commit-commands** - `/commit`, `/commit-push-pr`, `/clean_gone` commands
 
-## Chrome Integration
+#### 🛠️ Development
+- **feature-dev** - 7-phase feature development workflow with code-explorer, code-architect, code-reviewer agents
+- **typescript-lsp** - TypeScript/JavaScript language server support
+- **pyright-lsp** - Python language server support
 
-- Extension: "Claude in Chrome" (install from Chrome Web Store)
-- Usage: `claude --chrome`
-- Features: Live debugging, real browser control
+#### 🎓 Learning & Hooks
+- **hookify** - Create custom behavior-blocking hooks
+- **learning-output-style** - Interactive learning mode
+- **explanatory-output-style** - Educational insights
+- **ralph-wiggum** - Self-referential AI loops for iterative development
 
-## Configuration
+#### 📦 Development Tools
+- **plugin-dev** - Plugin development toolkit
+- **agent-sdk-dev** - Claude Agent SDK development kit
 
-**File**: `.claude/mcp_settings.json`
+### Plugin Marketplaces Configured
+- `claude-code-plugins` (anthropics/claude-code) - 13 plugins
+- `claude-plugins-official` (anthropics/claude-plugins-official) - 23 plugins (includes LSP servers)
+
+## MCP Server Setup
+
+### PostgreSQL MCP
+- Already running via Docker on port 8082 (see `docker-compose.yml` lines 108-119)
+- Container: `clinical-trial-matcher-postgres-mcp-1`
+- Endpoint: `http://localhost:8082/sse`
+- Provides: Database queries, schema inspection, EXPLAIN analysis
+
+### Context7 MCP
+- Configured to run via npx (auto-installs on demand)
+- Provides: Library documentation lookup for Vercel AI, Drizzle, TanStack Query, NextAuth, etc.
+
+### Chrome Integration (Using This, Not Puppeteer)
+- Extension: "Claude in Chrome" (already installed)
+- Native host: Running (`--chrome-native-host` process verified)
+- Provides: Live debugging, design verification, authenticated web apps, session recording
+- Usage: Start with `claude --chrome` or enable by default via `/chrome` command
+- **Note**: Using Claude Code's native Chrome integration instead of Puppeteer MCP for better debugging and real browser control
+
+### Configuration
+Created project-specific MCP config at `.claude/mcp_settings.json`:
 ```json
 {
   "mcpServers": {
@@ -46,9 +82,17 @@
 }
 ```
 
+Updated `.gitignore` to:
+- Ignore `.claude/*` session data
+- Keep `mcp_settings.json` in version control
+
 ## How to Use
 
-1. Install plugin: `claude plugin install frontend-design@claude-code-plugins`
-2. Start PostgreSQL MCP: `docker compose up -d`
-3. Copy `.claude/mcp_settings.json` to your project
-4. Start Claude: `claude --chrome`
+**Start session with all features:**
+```bash
+claude --chrome
+```
+
+**Or enable Chrome by default:**
+- Run `/chrome` command in any session
+- Select "Enable by default"
