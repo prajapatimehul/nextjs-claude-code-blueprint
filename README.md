@@ -6,7 +6,7 @@
 
 I tried 10+ repositories (Agent OS, various boilerplates, community configs) to set up Claude Code for Next.js development. **None satisfied me.**
 
-The problem: Too many agents, slash commands, and generalized docs. They duplicate what Claude Code already does (like `/explore` when Claude has Explore built-in) and eat your context window. Bloated configs fight against defaults instead of working with them.
+The problem: Too many agents, slash commands, and generalized docs. They duplicate what Claude Code already does (like `/create-feature` that launches 3 subagents to explore code, when Claude already does this when you say "create feature"). Bloated configs eat your context window and fight against defaults.
 
 **This Repo's Philosophy:**
 > **Only add what's missing. Never duplicate what Claude Code already does.**
