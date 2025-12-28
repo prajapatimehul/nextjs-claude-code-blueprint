@@ -1,0 +1,17 @@
+# Claude Code - ignore sessions but keep config
+.claude/*
+!.claude/mcp_settings.json
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+*.log

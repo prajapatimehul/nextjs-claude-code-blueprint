@@ -1,0 +1,28 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:17
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your-password-here
+      POSTGRES_DB: your-db-name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # PostgreSQL MCP Server (for Claude Code)
+  postgres-mcp:
+    image: crystaldba/postgres-mcp
+    restart: always
+    ports:
+      - '8082:8000'
+    environment:
+      DATABASE_URI: 'postgresql://postgres:your-password-here@postgres:5432/your-db-name'
+    command: --access-mode=unrestricted --transport=sse
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

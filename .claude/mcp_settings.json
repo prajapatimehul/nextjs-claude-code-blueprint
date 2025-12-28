@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upshift-dev/context7-mcp-server"]
+    },
+    "postgres": {
+      "type": "sse",
+      "url": "http://localhost:8082/sse"
+    }
+  }
+}
