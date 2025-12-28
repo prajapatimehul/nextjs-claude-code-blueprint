@@ -9,15 +9,19 @@ I tried 10+ repositories (Agent OS, various boilerplates, community configs) to 
 The problem: Too many agents, slash commands, and generalized docs. They duplicate what Claude Code already does (like `/create-feature` that launches 3 subagents to explore code, when Claude already does this when you say "create feature"). Bloated configs eat your context window and fight against defaults.
 
 **This Repo's Philosophy:**
-> **Only add what's missing. Never duplicate what Claude Code already does.**
+> **Only add what's needed for agentic coding with Next.js. Nothing else.**
 
-- ✅ MCP servers for real data (PostgreSQL, Context7)
-- ✅ Essential plugins (frontend-design, security-guidance)
-- ✅ Security hooks that block vulnerabilities
-- ❌ No custom "explore code" agents (Claude has this)
-- ❌ No dozens of slash commands (Claude's defaults are excellent)
-- ❌ No complex multi-agent orchestration (use Task tool)
-- ❌ No generalized documentation bloat
+Claude Code can't provide Next.js-specific development workflow configs because it's framework-agnostic. This repo fills that gap.
+
+We add:
+- ✅ Next.js-specific MCP servers (PostgreSQL, Context7 for Next.js docs)
+- ✅ Plugins for Next.js development (frontend-design)
+- ✅ Docker configs for local Next.js dev environment
+
+We DON'T add:
+- ❌ What Claude Code already has (explore agents, planning, Task tool)
+- ❌ Generalized configs that work for any language
+- ❌ Custom slash commands that duplicate defaults
 
 **Clean. Minimal. Works.**
 
